@@ -38,7 +38,7 @@ const FormRegister = () => {
           <div className="mb-8">
           <p href="#" className="text-sm text-slate-600">Your personal data will be used to support your experience throughout this website, to manage access to your account and for other purposes described in our privacy policy.</p>
           </div>
-          <div className="mb-8">
+          <div className="mb-2">
             <Label htmlFor="terms" className="flex items-center" type="checkbox">
               <input type="checkbox" id="terms" name="terms" />
               <span className="text-sm ml-2 text-slate-600">I agree to the <a href="#" className="text-primary font-semibold">Terms and Conditions</a> and <a href="#" className="text-primary font-semibold">Privacy Policy</a></span>
