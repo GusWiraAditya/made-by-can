@@ -1,9 +1,9 @@
-import LoginPage from "./Pages/login";
+import RegisterPage from "./Pages/register";
 
 function App() {
   return (
-    <div className="flex justify-center min-h-screen items-center bg-gray-100">
-      <LoginPage />
+    <div className="flex justify-center min-h-screen items-center bg-primary">
+      <RegisterPage />
     </div>
   );
 }

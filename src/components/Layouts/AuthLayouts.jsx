@@ -1,16 +1,23 @@
 import Button from "../Elements/Button/index";
+import { SlArrowLeftCircle } from "react-icons/sl";
+
+
 const AuthLayouts = (props) => {
     const { children, title } = props;
   return (
-    <div className="w-full max-w-md bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4">
-      <Button classname="px-1">
-        <svg className="w-[29px] h-[29px] text-gray-800 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.1" d="m15 19-7-7 7-7"/>
-        </svg>
-      </Button>
-      <h1 className="text-3xl font-black font-inter mb-8 text-primary">{title}</h1>
-      {children}
-    </div>
+    <div className="flex justify-center min-h-screen items-center bg-primary">
+   <div className="container mx-auto items-center px-4 justify-center max-w-lg shadow-lg rounded-2xl bg-white relative">
+  {/* BACK BUTTON */}
+  <Button className="absolute top-12 left-6 w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
+    <SlArrowLeftCircle className="w-[30px] h-[30px] text-white bg-secondary rounded-3xl mt-4" />
+  </Button>
+  <div className="w-full bg-white px-8 pt-6 pb-8 mb-4">
+    <h1 className="text-3xl font-black font-inter mb-8 text-primary">{title}</h1>
+    {children}
+  </div>
+</div>
+</div>
+
   );
 };
 

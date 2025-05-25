@@ -1,34 +1,51 @@
 import InputForm from "../Elements/Input"
 import Button from "../Elements/Button"
-import { Link } from "react-router-dom";
+import Label from "../Elements/Input/Label"
 
-const FormLogin = () => {
+const FormRegister = () => {
     return (
-        <form action="/">
+        <form action="/login">
           <div className="mb-8">
           <InputForm
-          id="email"
-          type="email"
-          name="email"
-          placeholder="Email / Username*"
+        //   id="username"
+          type="text"
+          name="username"
+          placeholder="Username*"
           />
           </div>
-          <div className="mb-2">
+          <div className="mb-8">
           <InputForm
-          id="password"
+        //   id="email"
+          type="email"
+          name="email"
+          placeholder="Email Address*"
+          />
+          </div>
+          <div className="mb-8">
+          <InputForm
+        //   id="password"
           type="password"
           name="password"
           placeholder="Password*" />
           </div>
-          <div className="mb-8 grid grid-cols-2 gap-52">
-          <p className="text-sm text-slate-600 underline">
-            <Link to="/register">
-            Sign Up
-            </Link></p>
-          <a href="#" className="text-sm text-slate-600 underline">Forgot Password</a>
+          <div className="mb-2">
+          <InputForm
+        //   id="confirmPassword"
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password*" />
           </div>
-          <Button classname="bg-primary w-full font-bold text-white font-inter">LOGIN</Button>
-          <div className="flex items-center my-4">
+          <div className="mb-8">
+          <p href="#" className="text-sm text-slate-600">Your personal data will be used to support your experience throughout this website, to manage access to your account and for other purposes described in our privacy policy.</p>
+          </div>
+          <div className="mb-8">
+            <Label htmlFor="terms" className="flex items-center" type="checkbox">
+              <input type="checkbox" id="terms" name="terms" />
+              <span className="text-sm ml-2 text-slate-600">I agree to the <a href="#" className="text-primary font-semibold">Terms and Conditions</a> and <a href="#" className="text-primary font-semibold">Privacy Policy</a></span>
+            </Label>
+          </div>
+          <Button classname="bg-primary w-full font-bold text-white font-inter mb-2">SIGN UP</Button>
+          {/* <div className="flex items-center my-4">
           <div className="flex-grow h-px bg-gray-300"></div>
           <span className="px-4 text-sm text-gray-400 font-semibold">OR</span>
           <div className="flex-grow h-px bg-gray-300"></div>
@@ -50,7 +67,7 @@ const FormLogin = () => {
                 <span className="mt-0.5">Facebook</span>
               </div>
             </Button>
-          </div>
+          </div> */}
           {/* <div className="mt-8 mb-8">
             <p>Login now and you will be able to:</p>
             <ul className="list-disc list-inside">
@@ -70,4 +87,4 @@ const FormLogin = () => {
     )
 }
 
-export default FormLogin;
+export default FormRegister;
