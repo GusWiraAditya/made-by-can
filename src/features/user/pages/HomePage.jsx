@@ -1,70 +1,16 @@
 import { useEffect, useState } from "react";
 import bgImage from "../../../assets/background/background.jpeg"; // ganti sesuai gambar kamu
+import {motion} from "framer-motion"
 import Button from "../../../components/ui/Button";
 import InputForm from "../../../components/ui/Input";
 import TextAreaForm from "../../../components/ui/TextArea";
-import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { FaStar } from "react-icons/fa6";
 import { FaRegStarHalfStroke } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa6";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import cat1 from "../../../assets/categories/cat1.jpeg"; // yang benar dari "framer-motion", bukan "motion/react"
-import cat2 from "../../../assets/categories/cat2.jpeg"; // yang benar dari "framer-motion", bukan "motion/react"
-import cat3 from "../../../assets/categories/cat3.jpeg"; // yang benar dari "framer-motion", bukan "motion/react"
-import bag1 from "../../../assets/products/BAG1.jpeg"; // yang benar dari "framer-motion", bukan "motion/react"
-import bag2 from "../../../assets/products/BAG2.jpeg"; // yang benar dari "framer-motion", bukan "motion/react"
-import bag3 from "../../../assets/products/BAG3.jpeg"; // yang benar dari "framer-motion", bukan "motion/react"
-import bag4 from "../../../assets/products/BAG4.jpeg"; // yang benar dari "framer-motion", bukan "motion/react"
+import { categories, productsData, reviews, questions } from "../../../data";
 
-const categories = [
-  { img: cat1, label: "Shoulder Bag" },
-  { img: cat2, label: "Massanger Bag" },
-  { img: cat3, label: "Waist Bag" },
-];
-
-const products = [
-  { img: bag1, name: "Spartan Backpack", price: 777000 },
-  { img: bag2, name: "Pepz Backpack", price: 999000 },
-  { img: bag3, name: "Zarwo Slingbag", price: 550000 },
-  { img: bag4, name: "Petod Leather Bag", price: 696900 },
-  { img: bag1, name: "Spartan Backpack", price: 777000 },
-  { img: bag2, name: "Pepz Backpack", price: 999000 },
-  { img: bag3, name: "Zarwo Slingbag", price: 550000 },
-  { img: bag4, name: "Petod Leather Bag", price: 696900 },
-];
-const reviews = [
-  { img: bag1, name: "Gus Wira", email: "guswiraaditya@gmail.com" },
-  { img: bag2, name: "Hendra Dinata", email: "hendradinata17@gmail.com" },
-  { img: bag3, name: "Tjok Turah Alit", email: "cokoerdaykey99@gmail.com" },
-];
-
-const questions = [
-  {
-    id: 1,
-    question: "Apa itu MadeByCan?",
-    answer:
-      "MadeByCan adalah platform e-commerce yang memberdayakan pelaku UMKM untuk memasarkan produk kerajinan tangan secara online kepada pasar lokal maupun internasional.",
-  },
-  {
-    id: 2,
-    question: "Bagaimana cara mendaftar sebagai penjual?",
-    answer:
-      "Kamu dapat mendaftar sebagai penjual dengan mengisi formulir pendaftaran di halaman 'Daftar UMKM', lalu tim kami akan memverifikasi datamu dalam waktu maksimal 2x24 jam.",
-  },
-  {
-    id: 3,
-    question: "Apakah produk yang dijual dijamin keasliannya?",
-    answer:
-      "Ya, kami bekerjasama langsung dengan pengrajin lokal dan melakukan kurasi produk sebelum ditampilkan di platform.",
-  },
-  {
-    id: 4,
-    question: "Bagaimana metode pembayarannya?",
-    answer:
-      "Kami menyediakan berbagai metode pembayaran seperti transfer bank, e-wallet (OVO, DANA, GoPay), dan kartu kredit.",
-  },
-];
 // Animation variant untuk setiap item
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -172,7 +118,7 @@ export default function HomePage() {
         </motion.h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {products.map((item, idx) => (
+          {productsData.map((item, idx) => (
             <motion.div
               custom={idx}
               initial="hidden"
@@ -334,71 +280,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section className=" p-6 md:px-20 md:py-10">
-        <div className="w-full mx-auto px-4">
-          <motion.h1
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 100 }}
-            transition={{ duration: 0.7 }}
-            className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-8"
-          >
-            <div className="flex items-center justify-between">
-              <h1>Contact Us</h1>
-            </div>
-          </motion.h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.7 }}
-              className="w-full h-full overflow-hidden rounded px-2"
-            >
-              <form action="/">
-                <div className="mb-2">
-                  <InputForm
-                    label="Full Name"
-                    id="name"
-                    type="text"
-                    name="name"
-                    placeholder="Full name*"
-                  />
-                </div>
-                <div className="mb-2">
-                  <InputForm
-                    label="Email"
-                    id="email"
-                    type="email"
-                    name="email"
-                    placeholder="Email*"
-                  />
-                </div>
-                <div className="mb-2">
-                  <TextAreaForm
-                    label="Message"
-                    value=""
-                    placeholder="Write your message here...*"
-                  />
-                </div>
-                <Button classname="bg-primary w-full font-bold text-white font-inter">
-                  Submit
-                </Button>
-              </form>
-            </motion.div>
-            <motion.iframe
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 0.7 }}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.0198978836206!2d115.169173174821!3d-8.784197589762089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd24511736ad3eb%3A0xe94b177e97228027!2sKost%20Yuen!5e0!3m2!1sid!2sid!4v1748297658875!5m2!1sid!2sid"
-              width="100%"
-              height="100%"
-              className="border-0 rounded-lg shadow-md"
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-        </div>
-      </section>
+      
     </>
   );
 }

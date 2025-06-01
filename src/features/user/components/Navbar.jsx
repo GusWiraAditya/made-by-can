@@ -44,9 +44,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src={isScrolled ? logoPrim : logo}
+              src={isHome ? (isScrolled ? logoPrim : logo) : logoPrim}
               alt="MBC"
-              className="h-20"
+              className="h-14 sm:h-20"
             />
           </Link>
 
@@ -57,13 +57,17 @@ export default function Navbar() {
                 <Link
                   to={href}
                   className={`transition-all ${
-                    location.pathname === href
-                      ? isScrolled
-                        ? "text-primary border-b-2 border-primary pb-1"
-                        : "text-white border-b-2 border-white pb-1"
-                      : isScrolled
-                      ? "text-primary hover:border-b-2 hover:border-primary pb-1"
-                      : "text-white hover:border-b-2 hover:border-white pb-1"
+                    isHome
+                      ? location.pathname === href
+                        ? isScrolled
+                          ? "text-primary border-b-2 border-primary pb-1"
+                          : "text-white border-b-2 border-white pb-1"
+                        : isScrolled
+                        ? "text-primary hover:border-b-2 hover:border-primary pb-1"
+                        : "text-white hover:border-b-2 hover:border-white pb-1"
+                      : location.pathname === href
+                      ? "text-primary border-b-2 border-primary pb-1"
+                      : "text-primary hover:border-b-2 hover:border-primary pb-1"
                   }`}
                 >
                   {label}
@@ -77,16 +81,22 @@ export default function Navbar() {
             <div className="flex flex-wrap items-center justify-center">
               <FaSearch
                 className={
-                  isScrolled ? "text-primary mr-2" : "text-neutral-50 mr-2"
+                  isHome
+                    ? isScrolled
+                      ? "text-primary mr-2"
+                      : "text-neutral-50 mr-2"
+                    : "text-primary mr-2"
                 }
               />
               <input
                 type="text"
                 placeholder="Search..."
                 className={`bg-transparent border-b outline-none text-sm ${
-                  isScrolled
-                    ? "placeholder:text-primary border-primary text-primary"
-                    : "placeholder:text-neutral-50 border-neutral-50 text-neutral-50"
+                  isHome
+                    ? isScrolled
+                      ? "placeholder:text-primary border-primary text-primary"
+                      : "placeholder:text-neutral-50 border-neutral-50 text-neutral-50"
+                    : "placeholder:text-primary border-primary text-primary"
                 }`}
               />
             </div>
@@ -98,7 +108,30 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden z-50">
+          <div className="md:hidden z-50 flex items-center justify-center">
+            <div className="flex items-center justify-center">
+              <FaSearch
+                className={
+                  isHome
+                    ? isScrolled
+                      ? "text-primary mr-2"
+                      : "text-neutral-50 mr-2"
+                    : "text-primary mr-2"
+                }
+              />
+              <input
+                type="text"
+                placeholder="Search..."
+                className={`bg-transparent border-b outline-none text-sm max-w-32  ${
+                  isHome
+                    ? isScrolled
+                      ? "placeholder:text-primary border-primary text-primary"
+                      : "placeholder:text-neutral-50 border-neutral-50 text-neutral-50"
+                    : "placeholder:text-primary border-primary text-primary"
+                }`}
+              />
+            </div>
+        
             <Button onClick={toggleMenu}>
               {isMenuOpen ? (
                 <X
@@ -108,10 +141,17 @@ export default function Navbar() {
               ) : (
                 <Menu
                   size={28}
-                  className={isScrolled ? "text-primary" : "text-white"}
+                  className={
+                    isHome
+                      ? isScrolled
+                        ? "text-primary"
+                        : "text-white"
+                      : "text-primary"
+                  }
                 />
               )}
             </Button>
+        
           </div>
         </div>
       </nav>
@@ -136,7 +176,7 @@ export default function Navbar() {
           <div className="flex justify-between items-center mb-6">
             <img src={logoPrim} alt="MBC" className="h-10" />
             <Button onClick={toggleMenu}>
-              <X size={24} />
+              <X size={24} className={"text-primary"} />
             </Button>
           </div>
 
@@ -159,11 +199,7 @@ export default function Navbar() {
           </nav>
 
           {/* Search & Login */}
-          <input
-            type="text"
-            placeholder="Search..."
-            className="border-b border-neutral-300 outline-none text-sm px-2 py-2 mt-6"
-          />
+
           <Button classname="bg-secondary text-white font-bold px-4 py-2 rounded mt-6">
             LOG IN
           </Button>
